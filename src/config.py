@@ -2,7 +2,7 @@
 
 Paths default to ./data inside the repository. On Google Colab, set the
 environment variable VS_DATA_ROOT to a Google Drive folder before importing,
-for example: os.environ["VS_DATA_ROOT"] = "/content/drive/MyDrive/voice-spoofing-data"
+for example: os.environ["VS_DATA_ROOT"] = "/content/drive/MyDrive/audio-detection-human-vs-ai"
 """
 from pathlib import Path
 import os

@@ -1,0 +1,25 @@
+variable,type,units_or_values,meaning,role,research_question
+clip_id,Identifier (text),–,Unique clip file name from the protocol file,Key,All
+speaker_id,Categorical (nominal),107 levels,Anonymous speaker code,"Cluster variable for splits, DEFF, bootstrap",All
+label (Y),Binary (nominal),"0 = human, 1 = synthetic",Ground-truth class,Dependent variable,All
+attack_system_id,Categorical (nominal),A01–A19; blank for human,Generation system that produced the clip,Grouping factor,RQ3
+attack_type,Categorical (nominal),"TTS, VC, hybrid",Family of the generation system,Grouping factor,RQ3
+system_status,Binary (nominal),"known, unseen",Whether the system appears in training,Grouping factor,RQ3
+split,Categorical (nominal),"training, validation, test-known, test-unknown",Study subset,Design variable,All
+channel,Binary (nominal),"clean, telephone",Audio condition,Independent (treatment) factor,RQ4
+duration_raw_s; leading_silence_s,Continuous (ratio),seconds,Raw length and leading silence before trimming,Quality and shortcut check only,QC
+mfcc_1–20_mean; mfcc_1–20_std (40),Continuous (interval),dimensionless,Average and variability of the spectral envelope,Independent variables,"RQ1, RQ2"
+"centroid, bandwidth, roll-off (mean, std; 6)",Continuous (ratio),Hz,"Brightness, spread and 85% energy frequency of the spectrum",Independent variables,"RQ1, RQ2"
+"flatness (mean, std; 2)",Continuous (ratio),"ratio, 0–1",Noise-like (1) versus tonal (0) spectrum,Independent variables,"RQ1, RQ2"
+"zcr (mean, std; 2)",Continuous (ratio),"proportion per frame, 0–1",Rate of signal sign changes,Independent variables,"RQ1, RQ2"
+contrast_1–7_mean (7),Continuous (interval),dB,Peak-to-valley difference in seven frequency bands,Independent variables,"RQ1, RQ2"
+"rms_mean, rms_std (2)",Continuous (ratio),normalized amplitude,Loudness level and variation,Independent variables,"RQ1, RQ2"
+rms_dynamic_range (1),Continuous (interval),dB,Difference between loud and quiet frames,Independent variable,"RQ1, RQ2"
+"f0_mean, f0_std (2)",Continuous (ratio),Hz,Pitch level and pitch variability,Independent variables,"RQ1, RQ2"
+voiced_fraction; pause_proportion (2),Continuous (ratio),"proportion, 0–1",Share of voiced frames; share of internal pauses,Independent variables,"RQ1, RQ2"
+logmel,Matrix (continuous),dB; 128 × 401,"Log-mel spectrogram (25 ms window, 10 ms hop)",Independent variable for CNN,RQ2–RQ4
+model_type,Categorical (nominal),"LR, SVM, RF, XGBoost, CNN, IF, OC-SVM",Model being evaluated,Comparison factor,"RQ2, RQ3"
+score,Continuous (ratio),"probability, 0–1",Predicted probability that the clip is synthetic,Model output,RQ2–RQ4
+predicted_label,Binary (nominal),"0, 1 at threshold τ",Classified label,Model output,RQ2–RQ4
+prevalence (π),Parameter (ratio),"proportion; .01, .05",Assumed share of synthetic callers,Scenario input,RQ4
+"C_FN, C_FP, C_review",Parameters (ratio),INR per event,"Cost of missed fraud, false alarm, manual review",Scenario inputs,RQ4

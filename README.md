@@ -36,20 +36,24 @@ The raw audio is **not** stored in this repository. Notebook 01 downloads it, re
 
 All splits are speaker-disjoint (official ASVspoof partitions) and drawn with a fixed seed (42). `data/metadata/split_assignments.csv` lists every clip used.
 
+### Data dictionary
+
+[`docs/data_dictionary.csv`](docs/data_dictionary.csv) defines every variable used in the study: identifiers, the label (dependent variable), grouping factors, the 64 acoustic features (independent variables) with their units, model outputs and the RQ4 cost parameters.
+
 ## How to run
 
 ### Option A — Google Colab (recommended)
 
-1. Open a notebook from this repository in Colab (File → Open notebook → GitHub → `abhilash-u/voice-spoofing`).
+1. Open a notebook from this repository in Colab (File → Open notebook → GitHub → `abhilash-u/audio-detection-human-vs-ai`).
 2. Select a GPU runtime (Runtime → Change runtime type → GPU).
-3. Run all cells. The first cell mounts Google Drive, clones the repo and installs the requirements. Data are stored in `MyDrive/voice-spoofing-data` so they persist between sessions.
+3. Run all cells. The first cell mounts Google Drive, clones the repo and installs the requirements. Data are stored in `MyDrive/audio-detection-human-vs-ai` so they persist between sessions.
 4. Run the notebooks in order: `00` → `01` → `02` → `03` → `04` → `05`.
 
 ### Option B — local machine
 
 ```bash
-git clone https://github.com/abhilash-u/voice-spoofing
-cd voice-spoofing
+git clone https://github.com/abhilash-u/audio-detection-human-vs-ai
+cd audio-detection-human-vs-ai
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 jupyter lab            # then run notebooks/00 ... 05 in order
@@ -95,7 +99,7 @@ Risk bands: **Low** (proceed), **Review** (step-up verification before any high-
 ## Repository structure
 
 ```
-voice-spoofing/
+audio-detection-human-vs-ai/
 ├── README.md
 ├── requirements.txt
 ├── LICENSE
@@ -114,6 +118,7 @@ voice-spoofing/
 │   └── 05_rq4_telephone_and_cost.ipynb
 ├── src/                        config, data, preprocess, features, models, evaluation, sample_size, predict
 ├── tests/                      pytest checks (sample sizes, metrics, end-to-end on toy audio)
+├── docs/                       data_dictionary.csv (every variable: type, units, meaning, role)
 ├── models/                     saved models and deployment bundle
 └── reports/                    result tables and figures written by the notebooks
 ```
