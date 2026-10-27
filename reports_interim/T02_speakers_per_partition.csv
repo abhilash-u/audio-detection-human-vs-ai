@@ -1,0 +1,4 @@
+official_partition,speakers
+dev,20
+eval,67
+train,20

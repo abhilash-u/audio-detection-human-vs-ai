@@ -1,0 +1,6 @@
+split,human,synthetic
+training,2580,2580
+validation,1020,1020
+test_human,1500,0
+test_known,0,1000
+test_unknown,0,1870

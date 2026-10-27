@@ -1,0 +1,9 @@
+model,metric,estimate,ci_low,ci_high
+LR,eer,0.0587,0.0444,0.0803
+LR,roc_auc,0.9826,0.9732,0.9906
+SVM,eer,0.028,0.0162,0.0458
+SVM,roc_auc,0.9951,0.991,0.998
+RF,eer,0.0512,0.0347,0.0643
+RF,roc_auc,0.9896,0.9824,0.9949
+XGBoost,eer,0.03,0.0172,0.0448
+XGBoost,roc_auc,0.9954,0.9911,0.9982

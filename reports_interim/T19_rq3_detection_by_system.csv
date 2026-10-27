@@ -1,0 +1,14 @@
+system,type,status,n,detection_rate,ci_low,ci_high
+A12,TTS,unseen,170,0.0059,0.0,0.0178
+A11,TTS,unseen,170,0.0235,0.0,0.0601
+A13,hybrid,unseen,170,0.0294,0.0,0.06
+A10,TTS,unseen,170,0.0412,0.0,0.0957
+A14,hybrid,unseen,170,0.0529,0.0225,0.1067
+A15,hybrid,unseen,170,0.0882,0.0309,0.171
+A18,VC,unseen,170,0.1706,0.1186,0.2472
+A17,VC,unseen,170,0.2706,0.1947,0.3482
+A16,TTS,known,500,0.97,0.9331,0.998
+A09,TTS,unseen,170,0.9765,0.954,0.9943
+A19,VC,known,500,0.98,0.9483,1.0
+A07,TTS,unseen,170,1.0,1.0,1.0
+A08,TTS,unseen,170,1.0,1.0,1.0

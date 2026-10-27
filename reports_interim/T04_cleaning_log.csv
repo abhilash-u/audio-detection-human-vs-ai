@@ -1,0 +1,8 @@
+issue,variables,detection,found,treatment
+Missing values,all metadata fields,isna() count per column,0 missing cells across 0 columns,attack_system_id / attack_type / system_status blank for human clips by design; no imputation needed
+Duplicate records,clip_id,duplicated() on clip_id,0 duplicate IDs,none needed
+Unreadable files,audio file,open and decode every sampled clip,0 of 11570,none needed
+Duplicate audio,audio content,MD5 hash of the original audio file,0 duplicates (0.00%),none needed
+Outliers (duration),duration_raw_s,"IQR rule: outside [0.17, 6.32] s",377 clips (3.3%),"kept; every clip is cropped or repeat-padded to 4 s, so length cannot drive the model"
+Very short speech,duration_trimmed_s,< 1.0 s of speech after trimming,635 clips (5.5%),kept; repeat-padded to 4 s
+Label leakage via silence,leading/trailing silence,silence-only classifier AUC (notebook 01),see T05,silence trimmed at 30 dB below peak; verified AUC near 0.5 after processing

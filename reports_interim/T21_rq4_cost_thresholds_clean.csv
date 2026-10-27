@@ -1,0 +1,3 @@
+prevalence,threshold,test_tpr,test_fpr,precision_at_prevalence,expected_cost_per_1000,cost_no_screening
+0.01,0.4259,0.978,0.044,0.1834,25046.0,500000.0
+0.05,0.1072,0.996,0.0867,0.3769,39680.0,2500000.0

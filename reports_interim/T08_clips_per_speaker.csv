@@ -1,0 +1,6 @@
+split,speakers,mean,median,min,max
+test_human,67,22.4,23.0,9,35
+test_known,48,20.8,21.5,7,41
+test_unknown,48,39.0,41.0,19,63
+training,20,258.0,261.5,205,325
+validation,20,102.0,87.0,26,229

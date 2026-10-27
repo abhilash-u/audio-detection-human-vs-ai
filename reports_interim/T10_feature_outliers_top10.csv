@@ -1,0 +1,11 @@
+feature,pct_beyond_4sd
+mfcc_20_std,0.93
+mfcc_19_std,0.89
+voiced_fraction,0.81
+mfcc_18_std,0.7
+f0_std,0.56
+mfcc_17_std,0.48
+pause_proportion,0.47
+rms_mean,0.21
+mfcc_6_mean,0.17
+mfcc_16_std,0.17

@@ -1,0 +1,7 @@
+official_partition,label_name,clips,speakers
+dev,human,2548,20
+dev,synthetic,22296,10
+eval,human,7355,67
+eval,synthetic,63882,48
+train,human,2580,20
+train,synthetic,22800,20
