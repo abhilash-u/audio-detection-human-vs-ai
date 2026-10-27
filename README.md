@@ -4,6 +4,23 @@ Code for the QM640 Data Analytics Capstone at Walsh College, *Audio-Based Detect
 
 The project classifies short speech clips as **human (bona fide)** or **synthetic (TTS / voice conversion)** using the ASVspoof 2019 Logical Access benchmark, measures how well detection holds up on unseen voice generators and telephone audio, and turns model scores into a cost-optimal risk-screening rule.
 
+## Interim report (Week 5) — start here
+
+The interim report's results were produced by **`notebooks/06_interim_eda_and_baselines.ipynb`** and are committed in
+**`reports_interim/`** (21 tables `T00`–`T21`, 12 figures `F01`–`F12`, `icc_summary.json`). The data behind them are also committed:
+
+| File | Contents |
+|---|---|
+| `data/metadata/audio_metadata.csv` | All 121,461 clips of ASVspoof 2019 LA: speaker, clip, system, label, partition |
+| `data/metadata/split_assignments.csv` | The 11,570-clip study sample (seed 42) with split and duration/silence QC fields |
+| `data/features/features_clean.csv` | The 64 acoustic features for every sampled clip |
+| `docs/data_dictionary.csv` | Definition, type, range/units, missing-value handling and role of every variable |
+
+With these files the EDA and baseline models can be re-run without downloading the audio.
+
+**Headline interim results:** SVM baseline EER 2.8% / ROC-AUC 0.995 on known attacks (Test-Known), but EER about 36% on
+unseen generators (Test-Unknown); the model relies mainly on 6.4–8 kHz spectral contrast.
+
 ## Research questions
 
 | RQ | Question | Notebook |
@@ -47,7 +64,7 @@ All splits are speaker-disjoint (official ASVspoof partitions) and drawn with a 
 1. Open a notebook from this repository in Colab (File → Open notebook → GitHub → `abhilash-u/audio-detection-human-vs-ai`).
 2. Select a GPU runtime (Runtime → Change runtime type → GPU).
 3. Run all cells. The first cell mounts Google Drive, clones the repo and installs the requirements. Data are stored in `MyDrive/audio-detection-human-vs-ai` so they persist between sessions.
-4. Run the notebooks in order: `00` → `01` → `02` → `03` → `04` → `05`.
+4. Run the notebooks in order: `00` → `01` → `02` → `03` → `04` → `05`. For the interim-report results only, run `06` (it needs just the dataset in Drive; it copies it to Colab's local disk, rebuilds the metadata and sample, and writes `reports_interim/`). Runtime about 45–60 min on a CPU runtime.
 
 ### Option B — local machine
 
@@ -103,7 +120,7 @@ audio-detection-human-vs-ai/
 ├── README.md
 ├── requirements.txt
 ├── LICENSE
-├── data/                       created by notebook 01 (not committed)
+├── data/                       audio created by notebook 01 (not committed); metadata and features committed
 │   ├── raw/asvspoof2019_LA/    downloaded LA.zip and extracted audio
 │   ├── processed/clean/        trimmed, 4 s, normalised audio
 │   ├── processed/telephone/    RQ4 telephone copies of test clips
@@ -115,12 +132,14 @@ audio-detection-human-vs-ai/
 │   ├── 02_features_and_rq1.ipynb
 │   ├── 03_rq2_classical_and_cnn.ipynb
 │   ├── 04_rq3_unseen_generators.ipynb
-│   └── 05_rq4_telephone_and_cost.ipynb
+│   ├── 05_rq4_telephone_and_cost.ipynb
+│   └── 06_interim_eda_and_baselines.ipynb   interim report: cleaning, EDA, baselines
 ├── src/                        config, data, preprocess, features, models, evaluation, sample_size, predict
 ├── tests/                      pytest checks (sample sizes, metrics, end-to-end on toy audio)
 ├── docs/                       data_dictionary.csv (every variable: type, units, meaning, role)
 ├── models/                     saved models and deployment bundle
-└── reports/                    result tables and figures written by the notebooks
+├── reports/                    result tables and figures written by notebooks 02–05
+└── reports_interim/            interim-report tables and figures (notebook 06)
 ```
 
 ### Metadata fields (`split_assignments.csv`)
