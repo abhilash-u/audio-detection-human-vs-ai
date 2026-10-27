@@ -1,25 +1,38 @@
-variable,type,units_or_values,meaning,role,research_question
-clip_id,Identifier (text),–,Unique clip file name from the protocol file,Key,All
-speaker_id,Categorical (nominal),107 levels,Anonymous speaker code,"Cluster variable for splits, DEFF, bootstrap",All
-label (Y),Binary (nominal),"0 = human, 1 = synthetic",Ground-truth class,Dependent variable,All
-attack_system_id,Categorical (nominal),A01–A19; blank for human,Generation system that produced the clip,Grouping factor,RQ3
-attack_type,Categorical (nominal),"TTS, VC, hybrid",Family of the generation system,Grouping factor,RQ3
-system_status,Binary (nominal),"known, unseen",Whether the system appears in training,Grouping factor,RQ3
-split,Categorical (nominal),"training, validation, test-known, test-unknown",Study subset,Design variable,All
-channel,Binary (nominal),"clean, telephone",Audio condition,Independent (treatment) factor,RQ4
-duration_raw_s; leading_silence_s,Continuous (ratio),seconds,Raw length and leading silence before trimming,Quality and shortcut check only,QC
-mfcc_1–20_mean; mfcc_1–20_std (40),Continuous (interval),dimensionless,Average and variability of the spectral envelope,Independent variables,"RQ1, RQ2"
-"centroid, bandwidth, roll-off (mean, std; 6)",Continuous (ratio),Hz,"Brightness, spread and 85% energy frequency of the spectrum",Independent variables,"RQ1, RQ2"
-"flatness (mean, std; 2)",Continuous (ratio),"ratio, 0–1",Noise-like (1) versus tonal (0) spectrum,Independent variables,"RQ1, RQ2"
-"zcr (mean, std; 2)",Continuous (ratio),"proportion per frame, 0–1",Rate of signal sign changes,Independent variables,"RQ1, RQ2"
-contrast_1–7_mean (7),Continuous (interval),dB,Peak-to-valley difference in seven frequency bands,Independent variables,"RQ1, RQ2"
-"rms_mean, rms_std (2)",Continuous (ratio),normalized amplitude,Loudness level and variation,Independent variables,"RQ1, RQ2"
-rms_dynamic_range (1),Continuous (interval),dB,Difference between loud and quiet frames,Independent variable,"RQ1, RQ2"
-"f0_mean, f0_std (2)",Continuous (ratio),Hz,Pitch level and pitch variability,Independent variables,"RQ1, RQ2"
-voiced_fraction; pause_proportion (2),Continuous (ratio),"proportion, 0–1",Share of voiced frames; share of internal pauses,Independent variables,"RQ1, RQ2"
-logmel,Matrix (continuous),dB; 128 × 401,"Log-mel spectrogram (25 ms window, 10 ms hop)",Independent variable for CNN,RQ2–RQ4
-model_type,Categorical (nominal),"LR, SVM, RF, XGBoost, CNN, IF, OC-SVM",Model being evaluated,Comparison factor,"RQ2, RQ3"
-score,Continuous (ratio),"probability, 0–1",Predicted probability that the clip is synthetic,Model output,RQ2–RQ4
-predicted_label,Binary (nominal),"0, 1 at threshold τ",Classified label,Model output,RQ2–RQ4
-prevalence (π),Parameter (ratio),"proportion; .01, .05",Assumed share of synthetic callers,Scenario input,RQ4
-"C_FN, C_FP, C_review",Parameters (ratio),INR per event,"Cost of missed fraud, false alarm, manual review",Scenario inputs,RQ4
+variable,definition,data_type,allowed_values_range_units,missing_values,study_role
+clip_id,Unique clip identifier from the protocol file,Text (ID),LA_T_/LA_D_/LA_E_ + 7 digits,None missing; checked for duplicates,Key; joins all files
+speaker_id,Anonymous VCTK speaker code,Nominal,LA_ + 4 digits (107 codes),None missing,"Cluster for splits, DEFF and bootstrap"
+key,Original protocol label,Nominal,"bonafide, spoof",None missing,Source of label
+label (Y),Ground-truth class,Binary,"0 = human, 1 = synthetic",None missing,Dependent variable
+attack_system_id,Generation system that produced the clip,Nominal,A01–A19; blank for human,Blank by design for human clips; not imputed,Grouping factor (RQ3)
+attack_type,Family of the generation system,Nominal,"TTS, VC, hybrid; blank for human",Blank by design for human clips,Grouping factor (RQ3)
+system_status,Whether the system appears in training,Nominal,"known, unseen; blank for human",Blank by design for human clips,Grouping factor (RQ3)
+official_partition,ASVspoof partition,Nominal,"train, dev, eval",None missing,Sampling frame
+split,Study subset,Nominal,"training, validation, test_human, test_known, test_unknown",Assigned to every sampled clip,Design variable
+path,Location of the original audio file,Text,File path under data/raw/,Checked readable,Provenance
+source_dataset,Dataset name,Nominal,ASVspoof2019_LA,Constant,Provenance
+source_url,Persistent identifier of the dataset,Text,https://doi.org/10.7488/ds/2555,Constant,Provenance
+duration_raw_s,Length of the original clip,Ratio,"Seconds, > 0",None missing,Cleaning and shortcut check
+leading_silence_s,Silence before speech in the original clip,Ratio,"Seconds, ≥ 0",None missing,Shortcut check only
+trailing_silence_s,Silence after speech in the original clip,Ratio,"Seconds, ≥ 0",None missing,Shortcut check only
+duration_trimmed_s,Speech length after trimming,Ratio,"Seconds, > 0",None missing,Cleaning check
+channel_available,Audio versions created,Nominal,clean; clean+telephone (test clips),Assigned by split,RQ4 design
+audio_md5,Checksum of the processed audio,Text (hash),32 hex characters,Missing = unreadable file (excluded),Duplicate detection
+mfcc_1–20_mean (20),Mean of each mel-frequency cepstral coefficient,Interval,"Real numbers, dimensionless",Training-median imputation if any,"Predictors (RQ1, RQ2)"
+mfcc_1–20_std (20),Standard deviation of each MFCC over time,Ratio,"≥ 0, dimensionless",As above,Predictors
+"centroid_mean, _std",Spectral center of mass (brightness),Ratio,"0–8,000 Hz",As above,Predictors
+"bandwidth_mean, _std",Spread of the spectrum around the centroid,Ratio,"0–8,000 Hz",As above,Predictors
+"rolloff_mean, _std",Frequency below which 85% of energy lies,Ratio,"0–8,000 Hz",As above,Predictors
+"flatness_mean, _std",Noise-like (1) versus tonal (0) spectrum,Ratio,0–1,As above,Predictors
+"zcr_mean, _std",Zero-crossing rate per frame,Ratio,0–1 (proportion),As above,Predictors
+contrast_1–7_mean (7),Peak-to-valley spectral contrast in 7 bands,Interval,"dB, ≥ 0",As above,Predictors
+"rms_mean, rms_std",Loudness level and variability,Ratio,"Normalized amplitude, ≥ 0",As above,Predictors
+rms_dynamic_range_db,95th-to-5th percentile frame loudness ratio,Interval,"dB, ≥ 0",As above,Predictor
+"f0_mean, f0_std",Pitch level and variability over voiced frames,Ratio,50–500 Hz (pYIN search range),0 if no voiced frame,Predictors
+voiced_fraction,Share of frames with detected pitch,Ratio,0–1,As above,Predictor
+pause_proportion,Share of frames 30 dB below the loudest frame,Ratio,0–1,As above,Predictor
+logmel,Log-mel spectrogram (planned CNN input),Matrix,"128 × 401 values, dB",Not applicable,CNN predictor (RQ2)
+model_type,Model being evaluated,Nominal,"Majority, LR, SVM, RF, XGBoost, CNN, IF, OC-SVM",Not applicable,Comparison factor
+score,Predicted probability that the clip is synthetic,Ratio,0–1,Not applicable,Model output
+predicted_label,Class after applying threshold τ,Binary,"0, 1",Not applicable,Model output
+prevalence (π),Assumed share of synthetic callers,Parameter,".01, .05",Not applicable,RQ4 scenario
+"C_FN, C_FP, C_review","Cost of missed fraud, false alarm, manual review",Parameter,"₹50,000; ₹200; ₹100 (varied ±50%)",Not applicable,RQ4 scenario
