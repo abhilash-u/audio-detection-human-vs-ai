@@ -64,7 +64,7 @@ All splits are speaker-disjoint (official ASVspoof partitions) and drawn with a 
 1. Open a notebook from this repository in Colab (File → Open notebook → GitHub → `abhilash-u/audio-detection-human-vs-ai`).
 2. Select a GPU runtime (Runtime → Change runtime type → GPU).
 3. Run all cells. The first cell mounts Google Drive, clones the repo and installs the requirements. Data are stored in `MyDrive/audio-detection-human-vs-ai` so they persist between sessions.
-4. Run the notebooks in order: `00` → `01` → `02` → `03` → `04` → `05`. For the interim-report results only, run `06` (it needs just the dataset in Drive; it copies it to Colab's local disk, rebuilds the metadata and sample, and writes `reports_interim/`). Runtime about 45–60 min on a CPU runtime.
+4. Run the notebooks in order: `00` → `01` → `02` → `03` → `04` → `05`. For the interim-report results only, run `06` (it needs just the dataset in Drive; it copies it to Colab's local disk, rebuilds the metadata and sample, and writes `reports_interim/`). Runtime about 90–110 min (approx) on a CPU runtime.
 
 ### Option B — local machine
 
