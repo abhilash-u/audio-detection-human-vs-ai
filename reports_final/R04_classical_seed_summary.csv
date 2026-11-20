@@ -1,0 +1,9 @@
+model,set,eer_mean,eer_sd,auc_mean
+LR,Test-Known,0.0587,,0.9826
+LR,Test-Unknown,0.3587,,0.7138
+RF,Test-Known,0.0497,0.0021,0.9897
+RF,Test-Unknown,0.3536,0.0023,0.7167
+SVM,Test-Known,0.028,0.0,0.9951
+SVM,Test-Unknown,0.3713,0.0,0.7028
+XGBoost,Test-Known,0.0305,0.0006,0.9955
+XGBoost,Test-Unknown,0.3502,0.0026,0.7192

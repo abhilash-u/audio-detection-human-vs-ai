@@ -1,0 +1,15 @@
+model,set,eer,roc_auc
+LR,Test-Known,0.0587,0.9826
+LR,Test-Unknown,0.3587,0.7138
+RF,Test-Known,0.0512,0.9896
+RF,Test-Unknown,0.355,0.7155
+XGBoost,Test-Known,0.03,0.9954
+XGBoost,Test-Unknown,0.3531,0.7189
+SVM,Test-Known,0.028,0.9951
+SVM,Test-Unknown,0.3713,0.7028
+CNN,Test-Known,0.0048,0.9998
+CNN,Test-Unknown,0.2276,0.8444
+IsolationForest,Test-Known,0.4957,0.5207
+IsolationForest,Test-Unknown,0.4489,0.5822
+OneClassSVM,Test-Known,0.4637,0.5487
+OneClassSVM,Test-Unknown,0.4021,0.6409

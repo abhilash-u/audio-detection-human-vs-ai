@@ -1,0 +1,7 @@
+model,prevalence,set,threshold,tpr,fpr,precision_at_prevalence,expected_cost_per_1000,cost_no_screening
+CNN (telephone-trained),0.01,Test-Known,0.9844,0.759,0.218,0.034,186005.0,500000.0
+CNN (telephone-trained),0.01,Test-Unknown,0.9844,0.6497,0.218,0.0292,240529.4225,500000.0
+CNN (telephone-trained),0.01,All test,0.9844,0.6878,0.218,0.0309,221531.3659,500000.0
+CNN (telephone-trained),0.05,Test-Known,0.9352,0.93,0.4913,0.0906,319680.0,2500000.0
+CNN (telephone-trained),0.05,Test-Unknown,0.9352,0.815,0.4913,0.0803,606671.7112,2500000.0
+CNN (telephone-trained),0.05,All test,0.9352,0.8551,0.4913,0.0839,506674.5993,2500000.0

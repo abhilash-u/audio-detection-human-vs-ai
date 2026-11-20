@@ -1,0 +1,3 @@
+comparison,set,acc_a,acc_best,b,c,statistic,p_value,method
+OneClassSVM vs SVM,Test-Unknown,0.59763,0.61513,486,545,3.26285,0.07087,chi-square with continuity correction
+CNN vs SVM,Test-Unknown,0.68309,0.61513,325,96,123.47743,0.0,chi-square with continuity correction

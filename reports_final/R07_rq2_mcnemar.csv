@@ -1,0 +1,3 @@
+comparison,set,acc_cnn,acc_best,b,c,statistic,p_value,method
+CNN vs SVM,Test-Known,0.9932,0.9704,73,16,35.23596,0.0,chi-square with continuity correction
+CNN vs SVM,Test-Unknown,0.68309,0.61513,325,96,123.47743,0.0,chi-square with continuity correction

@@ -1,0 +1,28 @@
+{
+ "best_classical": "SVM",
+ "best_one_class": "OneClassSVM",
+ "deployment_model": "CNN (telephone-trained)",
+ "cnn_best_seed": 42,
+ "risk_bands": {
+  "review": 0.9352,
+  "high": 0.99
+ },
+ "params": {
+  "LR": {
+   "C": 0.1
+  },
+  "SVM": {
+   "C": 1,
+   "gamma": 0.01
+  },
+  "RF": {
+   "n": 300,
+   "depth": null
+  },
+  "XGBoost": {
+   "n": 300,
+   "depth": 4,
+   "lr": 0.1
+  }
+ }
+}

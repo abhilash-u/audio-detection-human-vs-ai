@@ -1,0 +1,4 @@
+group,Low,Review,High
+Human,0.5093,0.324,0.1667
+Synthetic (known),0.07,0.249,0.681
+Synthetic (unseen),0.185,0.2257,0.5893

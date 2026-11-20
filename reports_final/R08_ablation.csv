@@ -1,0 +1,7 @@
+variant,n_features,set,n,TP,FN,FP,TN,accuracy,precision,recall_tpr,f1,fpr,roc_auc,pr_auc,eer
+All 64 features,64,Test-Known,2500,975,25,49,1451,0.9704,0.9521,0.975,0.9634,0.0327,0.9951,0.9924,0.028
+All 64 features,64,Test-Unknown,3370,622,1248,49,1451,0.6151,0.927,0.3326,0.4896,0.0327,0.7028,0.7899,0.3713
+Without contrast_7_mean,63,Test-Known,2500,580,420,161,1339,0.7676,0.7827,0.58,0.6663,0.1073,0.8515,0.7993,0.2272
+Without contrast_7_mean,63,Test-Unknown,3370,710,1160,161,1339,0.608,0.8152,0.3797,0.5181,0.1073,0.7271,0.7866,0.3436
+Without high-band features (8),56,Test-Known,2500,588,412,178,1322,0.764,0.7676,0.588,0.6659,0.1187,0.8469,0.7915,0.2375
+Without high-band features (8),56,Test-Unknown,3370,721,1149,178,1322,0.6062,0.802,0.3856,0.5208,0.1187,0.7119,0.771,0.3531
